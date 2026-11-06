@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fantasy Football Analyzer</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- React & ReactDOM -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <!-- Babel for JSX -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body class="bg-slate-950 text-white p-8">
+    <div id="root"></div>
+
+    <script type="text/babel">
+        function App() {
+            const [position, setPosition] = React.useState('WR');
+
+            const data = {
+                WR: [
+                    { name: 'Justin Jefferson', targets: 10.5, airYards: 145, proj: 22.4 },
+                    { name: 'Amon-Ra St. Brown', targets: 9.8, airYards: 85, proj: 19.1 }
+                ],
+                RB: [
+                    { name: 'Christian McCaffrey', snapShare: '85%', touches: 22, proj: 24.5 },
+                    { name: 'Breece Hall', snapShare: '72%', touches: 18, proj: 18.2 }
+                ]
+            };
+
+            const players = data[position];
+
+            return (
+                <div class="max-w-4xl mx-auto bg-slate-900 rounded-xl p-6 shadow-2xl border border-slate-800">
+                    <h1 class="text-3xl font-bold mb-6 text-center text-slate-100">Fantasy Start/Sit Analyzer</h1>
+                    
+                    <div class="flex justify-center gap-4 mb-8">
+                        {['RB', 'WR'].map(pos => (
+                            <button 
+                                key={pos}
+                                onClick={() => setPosition(pos)}
+                                class={`px-6 py-2 rounded-full font-semibold transition-colors ${position === pos ? 'bg-blue-600 text-white' : 'bg-slate-800 text-slate-400 hover:bg-slate-700'}`}
+                            >
+                                {pos}
+                            </button>
+                        ))}
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-8">
+                        <div class="bg-slate-800 p-6 rounded-lg text-center border-t-4 border-blue-500">
+                            <h2 class="text-2xl font-bold mb-4">{players[0].name}</h2>
+                            <p class="text-4xl font-black text-blue-400 mb-2">{players[0].proj}</p>
+                            <p class="text-sm text-slate-400 uppercase tracking-wide">Projected Points</p>
+                        </div>
+                        <div class="bg-slate-800 p-6 rounded-lg text-center border-t-4 border-purple-500">
+                            <h2 class="text-2xl font-bold mb-4">{players[1].name}</h2>
+                            <p class="text-4xl font-black text-purple-400 mb-2">{players[1].proj}</p>
+                            <p class="text-sm text-slate-400 uppercase tracking-wide">Projected Points</p>
+                        </div>
+                    </div>
+
+                    <div class="mt-8 bg-blue-900/30 border border-blue-800 rounded-lg p-4 text-center">
+                        <p class="text-lg">
+                            <span class="font-bold text-blue-400">Verdict:</span> Start <strong>{players[0].proj > players[1].proj ? players[0].name : players[1].name}</strong> based on higher projected volume and scoring potential in this matchup.
+                        </p>
+                    </div>
+                </div>
+            );
+        }
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<App />);
+    </script>
+</body>
+</html>
