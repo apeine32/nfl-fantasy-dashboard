@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Meta tags provide information about the document to the browser -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fantasy Football Analyzer</title>
+
+    <!-- Link to our external CSS file for custom styling -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Tailwind CSS (A framework that lets us style using class names) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- React & ReactDOM (Libraries for building interactive user interfaces) -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <!-- Babel (Translates our modern React code into standard JavaScript the browser understands) -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<!-- The body contains the visible content of the page -->
+<body class="bg-slate-950 text-white p-8 custom-background">
+    <!-- This empty div is where React will inject our entire application -->
+    <div id="root"></div>
+
+    <!-- Link to our external JavaScript file. Type text/babel tells Babel to process it -->
+    <script type="text/babel" src="script.js"></script>
+</body>
+</html>
