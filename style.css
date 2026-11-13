@@ -1,0 +1,14 @@
+/* This is the CSS (Cascading Style Sheets) file. It controls the look and feel of the website. */
+
+/* This rule targets any HTML element with the class "custom-background" */
+.custom-background {
+    /* Sets a specific font family for the whole page */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    /* Adds a subtle minimum height so the dark background covers the whole screen */
+    min-height: 100vh;
+}
+
+/* This rule adds a smooth transition effect to our buttons when hovered */
+button {
+    transition: all 0.3s ease-in-out;
+}
